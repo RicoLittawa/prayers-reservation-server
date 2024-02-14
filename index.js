@@ -11,7 +11,7 @@ import {
 import dotenv from "dotenv";
 dotenv.config({ path: "./.env" });
 const app = express();
-const port = process.env.MYSQLPORT || 3000;
+const port = process.env.MYSQLPORT;
 app.use(cors());
 // {
 //   origin: "https://prayers-reservation-server-production.up.railway.app",
@@ -70,6 +70,6 @@ app.delete("/admin/scheduled-prayers/:id", async (req, res) => {
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
