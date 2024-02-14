@@ -11,7 +11,8 @@ import {
 import dotenv from "dotenv";
 dotenv.config({ path: "./.env" });
 const app = express();
-const port = process.env.MYSQLPORT;
+const port = process.env.MYSQLPORT || 3000;
+
 app.use(express.json());
 app.use(function (req, res, next) {
   res.setHeader(
@@ -61,6 +62,9 @@ app.delete("/admin/scheduled-prayers/:id", async (req, res) => {
   const deleteRow = DeleteRow(id);
   res.json(deleteRow);
 });
-app.listen(port, () => {
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+app.listen(port,"0.0.0.0", () => {
   console.log(`Example app listening on port ${port}`);
 });
