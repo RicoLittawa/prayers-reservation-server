@@ -15,7 +15,7 @@ const port = process.env.PORT;
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://prayers-reservation-server-production.up.railway.app",
+    origin: "https://demo-prayers-reservation.netlify.app",
     methods: "GET,PUT,POST,DELETE",
     credentials: true,
   })
