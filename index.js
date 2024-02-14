@@ -14,11 +14,7 @@ const app = express();
 const port = process.env.MYSQLPORT;
 app.use(express.json());
 app.use(
-  cors({
-    origin: "https://demo-prayers-reservation.netlify.app",
-    methods: "GET,PUT,POST,DELETE",
-    credentials: true,
-  })
+  cors()
 );
 //Add reservation
 app.post("/add-reservation", async (req, res) => {
