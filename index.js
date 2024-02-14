@@ -14,7 +14,11 @@ const app = express();
 const port = process.env.PORT;
 app.use(express.json());
 app.use(
-  cors()
+  cors({
+    origin: "http://prayers-reservation-server-production.up.railway.app",
+    methods: "GET,PUT,POST,DELETE",
+    credentials: true,
+  })
 );
 //Add reservation
 app.post("/add-reservation", async (req, res) => {
