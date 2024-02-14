@@ -17,29 +17,29 @@ app.use(
   cors()
 );
 //Add reservation
-app.post("/add-reservation", async (req, res) => {
+app.post("/", async (req, res) => {
   const data = { ...req.body.data };
   const add = await AddReservation(data);
   res.json(add);
 });
 //Get list
-app.get("/reservation-list", async (req, res) => {
+app.get("/admin/scheduled-prayers", async (req, res) => {
   const list = await GetList();
   res.json(list);
 });
 //Get Count of Donation
-app.get("/dashboard-donations", async (req, res) => {
+app.get("/admin", async (req, res) => {
   const count = await GetTotalCountOfDonations();
   res.json(count);
 });
 
-app.get("/dashboard-reservations", async (req, res) => {
+app.get("/admin", async (req, res) => {
   const count = await GetTotalCountOfRows();
   res.json(count);
 });
 
 //Get data based on reservation date
-app.get("/reservation-list/:date/:time", async (req, res) => {
+app.get("/admin/list/:date/:time", async (req, res) => {
   const { date, time } = req.params;
   const getDataFromReservationDate = await GetListBaseOnReservationDate(
     date,
@@ -49,7 +49,7 @@ app.get("/reservation-list/:date/:time", async (req, res) => {
 });
 
 //Delete rows
-app.delete("/delete-row/:id", async (req, res) => {
+app.delete("/admin/scheduled-prayers/:id", async (req, res) => {
   const { id } = req.params;
   const deleteRow = DeleteRow(id);
   res.json(deleteRow);
