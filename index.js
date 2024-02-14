@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Origin",
     "https://demo-prayers-reservation.netlify.app/"
   ); // Replace with your domain
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS,DELETE");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 });
