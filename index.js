@@ -14,7 +14,7 @@ const app = express();
 const port = process.env.MYSQLPORT || 3000;
 app.use(
   cors({
-    origin: "https://prayers-reservation-server-production.up.railway.app/",
+    origin: "https://prayers-reservation-server-production.up.railway.app",
     methods: "GET,PUT,POST,DELETE",
     credentials: true,
   })
