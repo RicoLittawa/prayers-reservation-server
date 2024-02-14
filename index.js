@@ -12,17 +12,22 @@ import dotenv from "dotenv";
 dotenv.config({ path: "./.env" });
 const app = express();
 const port = process.env.MYSQLPORT || 3000;
-app.use(cors())
-app.use(express.json());
-app.use(function (req, res, next) {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://demo-prayers-reservation.netlify.app/"
-  ); // Replace with your domain
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS,DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-});
+app.use(
+  cors({
+    origin: "https://prayers-reservation-server-production.up.railway.app/",
+    methods: "GET,PUT,POST,DELETE",
+    credentials: true,
+  })
+);app.use(express.json());
+// app.use(function (req, res, next) {
+//   res.setHeader(
+//     "Access-Control-Allow-Origin",
+//     "https://demo-prayers-reservation.netlify.app/"
+//   ); // Replace with your domain
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS,DELETE");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//   next();
+// });
 
 //Add reservation
 app.post("/", async (req, res) => {

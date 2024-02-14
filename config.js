@@ -10,3 +10,20 @@ export const Pool = mysql
     database: process.env.MYSQL_DATABASE,
   })
   .promise();
+
+  // Test the MySQL connection
+Pool.getConnection((err, connection) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err.message);
+    return;
+  }
+  console.log('Connected to MySQL database');
+
+  // Release the connection
+  connection.release();
+});
+
+// Handle MySQL connection errors
+Pool.on('error', err => {
+  console.error('MySQL pool error:', err.message);
+});
