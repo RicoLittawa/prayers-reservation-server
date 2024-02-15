@@ -20,15 +20,6 @@ app.use(cors());
 //   credentials: true,
 // }
 app.use(express.json());
-// app.use(function (req, res, next) {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     "https://demo-prayers-reservation.netlify.app/"
-//   ); // Replace with your domain
-//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS,DELETE");
-//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-//   next();
-// });
 
 //Add reservation
 app.post("/", async (req, res) => {
@@ -42,12 +33,12 @@ app.get("/admin/scheduled-prayers", async (req, res) => {
   res.json(list);
 });
 //Get Count of Donation
-app.get("/admin", async (req, res) => {
+app.get("/admin/donations", async (req, res) => {
   const count = await GetTotalCountOfDonations();
   res.json(count);
 });
 
-app.get("/admin", async (req, res) => {
+app.get("/admin/rows", async (req, res) => {
   const count = await GetTotalCountOfRows();
   res.json(count);
 });
