@@ -12,6 +12,7 @@ import dotenv from "dotenv";
 dotenv.config({ path: "./.env" });
 const app = express();
 const port = process.env.MYSQLPORT || 3000;
+
 app.use(cors());
 // {
 //   origin: "https://prayers-reservation-server-production.up.railway.app",
